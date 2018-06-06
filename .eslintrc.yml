@@ -1,0 +1,95 @@
+env:
+  es6: true
+  mocha: true
+  node: true
+
+parser: babel-eslint
+parserOptions:
+  ecmaVersion: 7
+
+extends:
+  - airbnb-base
+
+settings:
+  import/resolver:
+    babel-module: {}
+rules:
+  arrow-parens:
+    - error
+    - always
+  no-param-reassign: 0
+  import/extensions: 0
+  import/first: 0
+  import/order:
+    - error
+    - newlines-between: always
+  semi:
+    - error
+    - never
+  padding-line-between-statements:
+    - error
+    - blankLine: always
+      prev: "*"
+      next:
+        - block
+        - block-like
+        - return
+    - blankLine: always
+      prev:
+        - block
+        - block-like
+        - return
+      next: "*"
+    - blankLine: always
+      prev: "*"
+      next:
+        - const
+        - let
+    - blankLine: always
+      prev:
+        - const
+        - let
+      next: "*"
+    - blankLine: never
+      prev:
+        - const
+        - let
+      next:
+        - const
+        - let
+  no-multiple-empty-lines:
+    - warn
+    - max: 1
+  object-property-newline: error
+  object-curly-newline:
+    - error
+    - minProperties: 1
+  array-element-newline:
+    - error
+    - always
+  array-bracket-newline:
+    - error
+    - minItems: 1
+  brace-style:
+    - error
+    - 1tbs
+    - allowSingleLine: false
+  max-len: 0
+  id-length:
+    - error
+    - exceptions:
+      - i
+  no-plusplus: 0
+  import/no-extraneous-dependencies:
+    - error
+    - devDependencies:
+      - "**/*.unit.js"
+      - "**/*.test.js"
+      - "**/*.spec.js"
+overrides:
+  - files:
+    - "*.test.js"
+    - "*.unit.js"
+    - "*.spec.js"
+    rules:
+      no-unused-expressions: 'off'
