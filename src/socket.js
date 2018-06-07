@@ -105,6 +105,11 @@ sockets.init = (server) => {
       })
     })
 
+    socket.on('DROP_ROOMS', () => {
+      sockets.rooms = []
+      io.emit('ROOMS_UPDATE', sockets.rooms)
+    })
+
     socket.on('disconnect', () => {
       debug(`Connection: disconnection for client ${socket.id}`)
       forEach(myRooms, (room) => {
